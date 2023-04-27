@@ -4,21 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>web development</title>
+    <title>timer</title>
+    <link rel="stylesheet" href="./dist/output.css">
 </head>
-
 <body>
-    <h1>web development</h1>
+    <main class="h-screen flex items-center justify-center">
+        <h2>
+            <span id="hour">12</span>:
+            <span id="minute">55</span>:
+            <span id="second">33</span>:
+            <span id="time">pm</span>
+        </h2>
+    </main>
 
-    <h2>html</h2>
-    <h3>tables</h3>
-    <h3>text fundamentals</h3>
-    
-    <h3>multimedia</h3>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis quo itaque tenetur. Blanditiis porro earum ipsa ad ratione velit, cum aperiam autem maiores illo iusto alias quo animi labore nesciunt.</p>
+    <script>
+        const hour = document.getElementById('hour')
+        const min = document.getElementById('minute')
+        const sec = document.getElementById('second')
+        const ampm = document.getElementById('time')
 
-    <h2>css</h2>
+        function updateTime(){
+            const h = new Date().getHours()
+            const m = new Date().getMinutes()
+            const s = new Date().getSeconds()
 
-    <h2>javascript</h2>
+            hour.textContent = h > 12 ? `0${h - 12}` : h
+            min.textContent = m
+            sec.textContent = s < 10 ? `0${s}` :s
+            ampm.textContent = h < 12 ? "AM" : "PM"
+
+            setTimeout(() => updateTime(), 1000)
+            
+        }
+
+        updateTime()
+    </script>
 </body>
 </html>
